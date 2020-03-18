@@ -903,7 +903,7 @@ _known_functions_scipy_special = {
     'laguerre': 'eval_laguerre',
     'assoc_laguerre': 'eval_genlaguerre',
     'beta': 'beta',
-    'LambertW' : 'lambertw',
+    'LambertW' : 'lambertw'
 }
 
 _known_constants_scipy_constants = {
@@ -968,6 +968,26 @@ class SciPyPrinter(NumPyPrinter):
     def _print_fresnelc(self, expr):
         return "{0}({1})[1]".format(
                 self._module_format("scipy.special.fresnel"),
+                self._print(expr.args[0]))
+
+    def _print_airyai(self, expr):
+        return "{0}({1})[0]".format(
+                self._module_format("scipy.special.airy"),
+                self._print(expr.args[0]))
+
+    def _print_airyaiprime(self, expr):
+        return "{0}({1})[1]".format(
+                self._module_format("scipy.special.airy"),
+                self._print(expr.args[0]))
+
+    def _print_airybi(self, expr):
+        return "{0}({1})[2]".format(
+                self._module_format("scipy.special.airy"),
+                self._print(expr.args[0]))
+                
+    def _print_airybiprime(self, expr):
+        return "{0}({1})[3]".format(
+                self._module_format("scipy.special.airy"),
                 self._print(expr.args[0]))
 
 
